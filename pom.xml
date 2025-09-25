@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.neotropic.flow.component</groupId>
-    <artifactId>gmaps-flow-root</artifactId>
-    <version>1.0.0</version>
+    <artifactId>gmaps-for-vaadin-flow-root</artifactId>
+    <version>0.1.0</version>
     <packaging>pom</packaging>
     
     <inceptionYear>2019</inceptionYear>
@@ -18,7 +18,7 @@
     </properties>
     <name>Google Map Flow Parent</name>
     <modules>
-        <module>google-map-flow</module>
-        <module>google-map-flow-demo</module>
+        <module>gmaps-for-vaadin-flow</module>
+        <module>gmaps-for-vaadin-flow-demo</module>
     </modules>
 </project>
