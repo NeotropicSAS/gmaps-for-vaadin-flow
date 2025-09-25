@@ -56,7 +56,7 @@ class GeometryPoly {
    * @returns {boolean} True if the given point exist inside the specified path.
    */
   isLocationOnEdge(point, paths, isPolyline, tolerance) {
-    const poly = null;
+    let poly = null;
     if (isPolyline)
       poly = new google.maps.Polyline({path: paths[0]});
     else
