@@ -12,8 +12,8 @@ Use the following maven dependency in your project, provided that the component 
 
 <dependency>
     <groupId>com.neotropic.flow.component</groupId>
-    <artifactId>google-maps-flow</artifactId>
-    <version>1.0</version>
+    <artifactId>gmaps-for-vaadin-flow</artifactId>
+    <version>0.1.0</version>
     <type>jar</type>
 </dependency>
 
