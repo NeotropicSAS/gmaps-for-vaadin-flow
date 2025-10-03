@@ -1,6 +1,6 @@
 # GoogleMap Component for Vaadin Flow
 
-Vaadin Flow integration for (Google Maps)[https://maps.google.com].
+Vaadin Flow integration for [Google Maps](https://maps.google.com).
 
 ## License
 
@@ -18,8 +18,9 @@ Use the following maven dependency in your project, provided that the component 
 </dependency>
 
 ## Basic use
+`GoogleMap googleMap = new GoogleMap("API_KEY");`
 
-GoogleMap googleMap = new GoogleMap("API_KEY");
+Request or purchase an API key from [Google](https://developers.google.com/maps/third-party-platforms/wordpress/generate-api-key)
 
 ## Starting the test/demo server:
 1. Run `mvn jetty:run`.
