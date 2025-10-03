@@ -1,6 +1,6 @@
 # GoogleMap Component for Vaadin Flow
 
-Vaadin 24 Java integration of <google-map> web component
+Vaadin Flow integration for (Google Maps)[https://maps.google.com].
 
 ## License
 
