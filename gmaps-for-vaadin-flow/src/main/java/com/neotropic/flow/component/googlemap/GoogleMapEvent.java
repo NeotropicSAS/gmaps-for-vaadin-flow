@@ -159,23 +159,55 @@ public class GoogleMapEvent {
     //</editor-fold>
     //<editor-fold desc="Marker Events" defaultstate="collapsed">
     @DomEvent("marker-click")
-    public static class MarkerClickEvent extends ComponentEvent<GoogleMapMarker> {
-        public MarkerClickEvent(GoogleMapMarker source, boolean fromClient) {
+    public static class MarkerClickEvent extends ComponentEvent<GoogleMapLegacyMarker> {
+        public MarkerClickEvent(GoogleMapLegacyMarker source, boolean fromClient) {
+            super(source, fromClient);
+        }
+    }
+    @DomEvent("advanced-marker-click")
+    public static class AdvancedMarkerClickEvent extends ComponentEvent<GoogleMapAdvancedMarker> {
+        public AdvancedMarkerClickEvent(GoogleMapAdvancedMarker source, boolean fromClient) {
             super(source, fromClient);
         }
     }
     @DomEvent("marker-dbl-click")
-    public static class MarkerDblClickEvent extends ComponentEvent<GoogleMapMarker> {
-        public MarkerDblClickEvent(GoogleMapMarker source, boolean fromClient) {
+    public static class MarkerDblClickEvent extends ComponentEvent<GoogleMapLegacyMarker> {
+        public MarkerDblClickEvent(GoogleMapLegacyMarker source, boolean fromClient) {
+            super(source, fromClient);
+        }
+    }
+    @DomEvent("advanced-marker-dbl-click")
+    public static class AdvancedMarkerDblClickEvent extends ComponentEvent<GoogleMapAdvancedMarker> {
+        public AdvancedMarkerDblClickEvent(GoogleMapAdvancedMarker source, boolean fromClient) {
             super(source, fromClient);
         }
     }
     @DomEvent("marker-drag-end")
-    public static class MarkerDragEnd extends ComponentEvent<GoogleMapMarker> {
+    public static class MarkerDragEnd extends ComponentEvent<GoogleMapLegacyMarker> {
         private final double lat;
         private final double lng;
         
-        public MarkerDragEnd(GoogleMapMarker source, boolean fromClient,
+        public MarkerDragEnd(GoogleMapLegacyMarker source, boolean fromClient,
+            @EventData("event.detail.lat") double lat, @EventData("event.detail.lng") double lng) {
+            super(source, fromClient);
+            this.lat = lat;
+            this.lng = lng;
+        }
+        
+        public double getLat() {
+            return lat;
+        }
+        
+        public double getLng() {
+            return lng;
+        }
+    }
+    @DomEvent("advanced-marker-drag-end")
+    public static class AdvancedMarkerDragEnd extends ComponentEvent<GoogleMapAdvancedMarker> {
+        private final double lat;
+        private final double lng;
+        
+        public AdvancedMarkerDragEnd(GoogleMapAdvancedMarker source, boolean fromClient,
             @EventData("event.detail.lat") double lat, @EventData("event.detail.lng") double lng) {
             super(source, fromClient);
             this.lat = lat;
@@ -191,11 +223,31 @@ public class GoogleMapEvent {
         }
     }
     @DomEvent("marker-drag-start")
-    public static class MarkerDragStart extends ComponentEvent<GoogleMapMarker> {
+    public static class MarkerDragStart extends ComponentEvent<GoogleMapLegacyMarker> {
         private final double lat;
         private final double lng;
         
-        public MarkerDragStart(GoogleMapMarker source, boolean fromClient,
+        public MarkerDragStart(GoogleMapLegacyMarker source, boolean fromClient,
+            @EventData("event.detail.lat") double lat, @EventData("event.detail.lng") double lng) {
+            super(source, fromClient);
+            this.lat = lat;
+            this.lng = lng;
+        }
+        
+        public double getLat() {
+            return lat;
+        }
+        
+        public double getLng() {
+            return lng;
+        }
+    }
+    @DomEvent("advanced-marker-drag-start")
+    public static class AdvancedMarkerDragStart extends ComponentEvent<GoogleMapAdvancedMarker> {
+        private final double lat;
+        private final double lng;
+        
+        public AdvancedMarkerDragStart(GoogleMapAdvancedMarker source, boolean fromClient,
             @EventData("event.detail.lat") double lat, @EventData("event.detail.lng") double lng) {
             super(source, fromClient);
             this.lat = lat;
@@ -211,32 +263,57 @@ public class GoogleMapEvent {
         }
     }
     @DomEvent("marker-mouse-out")
-    public static class MarkerMouseOutEvent extends ComponentEvent<GoogleMapMarker> {
-        public MarkerMouseOutEvent(GoogleMapMarker source, boolean fromClient) {
+    public static class MarkerMouseOutEvent extends ComponentEvent<GoogleMapLegacyMarker> {
+        public MarkerMouseOutEvent(GoogleMapLegacyMarker source, boolean fromClient) {
             super(source, fromClient);
         }
     }
+    @DomEvent("advanced-marker-mouse-out")
+    public static class AdvancedMarkerMouseOutEvent extends ComponentEvent<GoogleMapAdvancedMarker> {
+        public AdvancedMarkerMouseOutEvent(GoogleMapAdvancedMarker source, boolean fromClient) {
+            super(source, fromClient);
+        }
+    }
+    
     @DomEvent("marker-mouse-over")
-    public static class MarkerMouseOverEvent extends ComponentEvent<GoogleMapMarker> {
-        public MarkerMouseOverEvent(GoogleMapMarker source, boolean fromClient) {
+    public static class MarkerMouseOverEvent extends ComponentEvent<GoogleMapLegacyMarker> {
+        public MarkerMouseOverEvent(GoogleMapLegacyMarker source, boolean fromClient) {
+            super(source, fromClient);
+        }
+    }
+    @DomEvent("advanced-marker-mouse-over")
+    public static class AdvancedMarkerMouseOverEvent extends ComponentEvent<GoogleMapAdvancedMarker> {
+        public AdvancedMarkerMouseOverEvent(GoogleMapAdvancedMarker source, boolean fromClient) {
             super(source, fromClient);
         }
     }
     @DomEvent("marker-position-changed")
-    public static class MarkerPositionChange extends ComponentEvent<GoogleMapMarker> {
-        public MarkerPositionChange(GoogleMapMarker source, boolean fromClient) {
+    public static class MarkerPositionChange extends ComponentEvent<GoogleMapLegacyMarker> {
+        public MarkerPositionChange(GoogleMapLegacyMarker source, boolean fromClient) {
+            super(source, fromClient);
+        }
+    }
+    @DomEvent("advanced-marker-position-changed")
+    public static class AdvancedMarkerPositionChange extends ComponentEvent<GoogleMapAdvancedMarker> {
+        public AdvancedMarkerPositionChange(GoogleMapAdvancedMarker source, boolean fromClient) {
             super(source, fromClient);
         }
     }
     @DomEvent("marker-right-click")
-    public static class MarkerRightClickEvent extends ComponentEvent<GoogleMapMarker> {
-        public MarkerRightClickEvent(GoogleMapMarker source, boolean fromClient) {
+    public static class MarkerRightClickEvent extends ComponentEvent<GoogleMapLegacyMarker> {
+        public MarkerRightClickEvent(GoogleMapLegacyMarker source, boolean fromClient) {
+            super(source, fromClient);
+        }
+    }
+    @DomEvent("advanced-marker-right-click")
+    public static class AdvancedMarkerRightClickEvent extends ComponentEvent<GoogleMapAdvancedMarker> {
+        public AdvancedMarkerRightClickEvent(GoogleMapAdvancedMarker source, boolean fromClient) {
             super(source, fromClient);
         }
     }
     @DomEvent("marker-animation-changed")
-    public static class MarkerAnimationChangedEvent extends ComponentEvent<GoogleMapMarker> {
-        public MarkerAnimationChangedEvent(GoogleMapMarker source, boolean fromClient) {
+    public static class MarkerAnimationChangedEvent extends ComponentEvent<GoogleMapLegacyMarker> {
+        public MarkerAnimationChangedEvent(GoogleMapLegacyMarker source, boolean fromClient) {
             super(source, fromClient);
         }
     }

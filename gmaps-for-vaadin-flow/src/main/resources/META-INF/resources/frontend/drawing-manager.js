@@ -109,7 +109,7 @@ class DrawingManager extends PolymerElement {
       this.drawingManager.setMap(null);
   }
   _drawingModeChanged(newValue, oldValue) {
-    if (this.drawingManager)
+    if (this.drawingManager) 
       this.drawingManager.setOptions({drawingMode: newValue});
   }
   _drawingControlChanged(newValue, oldValue) {
