@@ -26,7 +26,7 @@ class MapApi {
      * @param {string} clientId
      * @param {string} libraries libraries=drawing,geometry,places,visualization
      */
-    constructor(apiKey, clientId, libraries) {
+    constructor(apiKey, mapId, clientId, libraries) {
         if (!apiKey) {
             console.warn('google-maps must include an API key');
         }
@@ -36,6 +36,14 @@ class MapApi {
          * @protected
          */
         this._apiKey = apiKey;
+        
+        /** 
+         * The string contains your application MAP id. See https://developers.google.com/maps/documentation/javascript/map-ids/mapid-over
+         * @type {string} 
+         * @protected
+         */
+        this._mapId = mapId;
+        
         /**
          * Specifies a client Id
          * @type {string}
@@ -50,11 +58,15 @@ class MapApi {
         this._libraries = libraries;
 
         this._paramApiKey = '';
+        this._paramMapId = '';
         this._paramClientId = '';
         this._paramLibraries = '';
 
         if (this._apiKey && !this._clientId) {
             this._paramApiKey = 'key=' + this._apiKey;             
+            if(this._mapId) {
+                this._paramMapId = '&map_ids=' + this._mapId;
+            }
         }
         if (this._clientId) {
             this._paramClientId = 'client=' + this._clientId;
@@ -83,7 +95,7 @@ class MapApi {
 
                 if (!window.google || (google && !google.maps)) {
                     const script = document.createElement('script');
-                    script.src = 'https://maps.googleapis.com/maps/api/js?' + this._paramApiKey + this._paramClientId + this._paramCallback + this._paramLibraries;
+                    script.src = 'https://maps.googleapis.com/maps/api/js?' + this._paramApiKey + this._paramMapId + this._paramClientId + this._paramCallback + this._paramLibraries + "&v=3.64";
                     script.async = true;
                     script.defer = true;
                     document.body.append(script);

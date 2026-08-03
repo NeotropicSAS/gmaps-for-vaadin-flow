@@ -22,6 +22,7 @@ package com.neotropic.flow.component.googlemap;
 public class Constants {
     public static class Property {
         public static String API_KEY = "apiKey"; //NOI18N
+        public static String MAP_ID = "mapId"; //NOI18N
         public static String CLIENT_ID = "clientId"; //NOI18N
         public static String LIBRARIES = "libraries"; //NOI18N
         public static String LAT = "lat"; //NOI18N

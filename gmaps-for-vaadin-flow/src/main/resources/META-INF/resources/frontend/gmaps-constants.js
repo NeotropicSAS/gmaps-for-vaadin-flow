@@ -19,7 +19,8 @@ limitations under the License.
  * @author Johny Andres Ortega Ruiz {@literal <johny.ortega@kuwaiba.org>}
  */
 export const googleMap = 'google-map';
-export const googleMapMarker = 'google-map-marker';
+export const googleMapLegacyMarker = 'google-map-legacy-marker';
+export const googleMapAdvancedMarker = 'google-map-advanced-marker';
 export const googleMapPolyline = 'google-map-polyline';
 export const heatmapLayer = 'heatmap-layer';
 export const googleMapsJavaScriptAPIVersion = 'weekly';

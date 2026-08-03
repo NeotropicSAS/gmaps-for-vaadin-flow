@@ -59,6 +59,10 @@ class GoogleMap extends PolymerElement {
           background-color: var(--marker-labels-fill-color);
           padding: var(--labels-padding);
         }
+        .clusterLabel {
+          background-color: transparent;
+          font-weight: bold;
+        }
         .polylineLabel {
           background-color: var(--polyline-labels-fill-color);
           padding: var(--labels-padding);
@@ -96,6 +100,14 @@ class GoogleMap extends PolymerElement {
         type: String,
         value: ''
       },
+      /**
+       * The string contains your application API key. See https://developers.google.com/maps/documentation/javascript/map-ids/mapid-over
+       */
+      mapId: {
+        type: String,
+        value: ''
+      },
+
       /**
        * Specifies a client Id
        */
@@ -289,12 +301,18 @@ class GoogleMap extends PolymerElement {
      * Map instance which define a single map on a page
      * @type google.map.Map
      */
-    this.map = new google.maps.Map(this.shadowRoot.getElementById(this.divId), {
+    
+    const mapOptions = {
       center: {lat: this.lat, lng: this.lng},
       zoom: this.zoom,
       disableDefaultUI: this.disableDefaultUi,
       clickableIcons: this.clickableIcons
-    });
+    };
+    if (this.mapId && this.mapId.trim() !== "") {
+      mapOptions.mapId = this.mapId;
+    }
+
+    this.map = new google.maps.Map(this.shadowRoot.getElementById(this.divId), mapOptions);
     this.map.setMapTypeId(this.mapTypeId);
     this._stylesChanged(this.styles);
     /*
@@ -387,16 +405,15 @@ class GoogleMap extends PolymerElement {
    * @return {void}
    */
   ready() {
-    super.ready();    
-
-    const mapApi = new MapApi(this.apiKey, this.clientId, this.libraries);
+    super.ready();
+    const mapApi = new MapApi(this.apiKey, this.mapId, this.clientId, this.libraries);
     mapApi.load().then(() => {this.initMap()});
   }
        
   _processAddedNodes(addedNodes) {
     addedNodes.forEach(value => {
-      if (value.added)
-        value.added(this.map);
+        if (value.added)
+            value.added(this.map);
     });
   }
 

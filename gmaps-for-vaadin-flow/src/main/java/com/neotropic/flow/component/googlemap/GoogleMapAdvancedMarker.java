@@ -28,15 +28,15 @@ import elemental.json.JsonValue;
  *
  * @author Johny Andres Ortega Ruiz {@literal <johny.ortega@kuwaiba.org>}
  */
-@Tag("google-map-marker")
-@JsModule("./gmaps-marker.js")
-public class GoogleMapMarker extends Component {
-    public GoogleMapMarker(double lat, double lng) {
+@Tag("google-map-advanced-marker")
+@JsModule("./gmaps-advanced-marker.js")
+public class GoogleMapAdvancedMarker extends Component {
+    public GoogleMapAdvancedMarker(double lat, double lng) {
         getElement().setProperty(Constants.Property.LAT, lat);
         getElement().setProperty(Constants.Property.LNG, lng);
     }
     //<editor-fold desc="Marker Properties" defaultstate="collapsed">
-    @Synchronize(property="lat", value="marker-position-changed")
+    @Synchronize(property="lat", value="advanced-marker-position-changed")
     public double getLat() {
         return getElement().getProperty(Constants.Property.LAT, Constants.Default.LAT);
     }
@@ -44,7 +44,7 @@ public class GoogleMapMarker extends Component {
     public void setLat(double lat) {
         getElement().setProperty(Constants.Property.LAT, lat);
     }
-    @Synchronize(property="lng", value="marker-position-changed")
+    @Synchronize(property="lng", value="advanced-marker-position-changed")
     public double getLng() {
         return getElement().getProperty(Constants.Property.LNG, Constants.Default.LNG);
     }

@@ -37,22 +37,24 @@ public class GoogleMap extends Component implements HasComponents {
      * @param apiKey Your API key and set the client id to null. See https://developers.google.com/maps/documentation/javascript/get-api-key
      * @param clientId Your client id and set the apiKey to null. See https://developers.google.com/maps/documentation/javascript/get-api-key
      */    
-    public GoogleMap(String apiKey, String clientId) {
+    public GoogleMap(String apiKey, String mapId, String clientId) {
         getElement().getStyle().set(Constants.Property.WIDTH, "100%");
         getElement().getStyle().set(Constants.Property.HEIGHT, "100%");        
         getElement().setProperty(Constants.Property.API_KEY, apiKey);
+        getElement().setProperty(Constants.Property.MAP_ID, mapId);
         getElement().getStyle().set(Constants.Property.MIN_WIDTH, "250px");  
         getElement().setProperty(Constants.Property.CLIENT_ID, clientId);
     }
-    public GoogleMap(String apiKey, String clientId, String width, String height) {
+    public GoogleMap(String apiKey, String mapId, String clientId, String width, String height) {
         getElement().getStyle().set(Constants.Property.WIDTH, width);
         getElement().getStyle().set(Constants.Property.HEIGHT, height);  
         getElement().getStyle().set(Constants.Property.MIN_WIDTH, "250px");  
         getElement().setProperty(Constants.Property.API_KEY, apiKey);
+        getElement().setProperty(Constants.Property.MAP_ID, mapId);
         getElement().setProperty(Constants.Property.CLIENT_ID, clientId);
     }
-    public GoogleMap(String apiKey, String clientId, String libraries) {
-        this(apiKey, clientId);
+    public GoogleMap(String apiKey, String mapId, String clientId, String libraries) {
+        this(apiKey, mapId, clientId);
         getElement().setProperty(Constants.Property.LIBRARIES, libraries);
     }
     @Synchronize(property = "lat", value = "map-center-changed")
@@ -260,12 +262,20 @@ public class GoogleMap extends Component implements HasComponents {
         getElement().setProperty(Constants.Property.LABEL_SELECTED_POLYLINE_LABELS_FILL_COLOR, selectedPolylineLabelsFillColor);
     }
     
-    public void newMarker(GoogleMapMarker googleMapMarker) {
-        add(googleMapMarker);
+    public void newLegacyMarker(GoogleMapLegacyMarker googleMapLegacyMarker) {
+        add(googleMapLegacyMarker);
     }
     
-    public void removeMarker(GoogleMapMarker googleMapMarker) {
-        remove(googleMapMarker);
+    public void removeLegacyMarker(GoogleMapLegacyMarker googleMapLegacyMarker) {
+        remove(googleMapLegacyMarker);
+    }
+    
+    public void newAdvancedMarker(GoogleMapAdvancedMarker googleMapAdvancedMarker) {
+        add(googleMapAdvancedMarker);
+    }
+    
+    public void removeAdvancedMarker(GoogleMapAdvancedMarker googleMapAdvancedMarker) {
+        remove(googleMapAdvancedMarker);
     }
     
     public void newPolyline(GoogleMapPolyline polyline) {
